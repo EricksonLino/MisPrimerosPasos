@@ -21,5 +21,16 @@ namespace MisPrimerosPasos.Api.Controllers
             var alumnos = await this.alumnoApplication.ListarAlumnos();
             return alumnos;
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Alumno>> ObtenerAlumno(int id)
+        {
+            var alumno = await this.alumnoApplication.ObtenerAlumno(id);
+            if(alumno == null)
+            {
+                return NotFound($"Ups! no se encontro el alumno con ID {id}");
+            }
+            return alumno;
+        }
     }
 }

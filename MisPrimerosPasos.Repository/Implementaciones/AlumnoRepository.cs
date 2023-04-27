@@ -17,5 +17,11 @@ namespace MisPrimerosPasos.Repository.Implementaciones
             var alumnos = await this.context.Alumnos.ToListAsync();
             return alumnos;
         }
+
+        public async Task<Alumno> ObtenerAlumno(int id)
+        {
+            var Alumno = await this.context.Alumnos.FirstOrDefaultAsync(al => al.Id == id);
+            return Alumno;
+        }
     }
 }
