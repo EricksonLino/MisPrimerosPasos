@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MisPrimerosPasos.Application.Implementaciones;
 using MisPrimerosPasos.Application.Interfaces;
+using MisPrimerosPasos.Application.Profiles;
 using MisPrimerosPasos.Repository;
 using MisPrimerosPasos.Repository.Implementaciones;
 using MisPrimerosPasos.Repository.Interfaces;
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(cfg =>
                                     cfg.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IAlumnoRepository, AlumnoRepository>();
 builder.Services.AddScoped<IAlumnoApplication, AlumnoApplication>();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

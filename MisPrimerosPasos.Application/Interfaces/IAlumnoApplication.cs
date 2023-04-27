@@ -1,10 +1,11 @@
-﻿using MisPrimerosPasos.Entity;
+﻿using MisPrimerosPasos.Application.Dtos;
+using MisPrimerosPasos.Entity;
 
 namespace MisPrimerosPasos.Application.Interfaces
 {
     public interface IAlumnoApplication
     {
-        Task<List<Alumno>> ListarAlumnos();
-        Task<Alumno> ObtenerAlumno(int id);
+        Task<List<AlumnoDto>> ListarAlumnos();
+        Task<AlumnoDetalleDto> ObtenerAlumno(int id);
     }
 }

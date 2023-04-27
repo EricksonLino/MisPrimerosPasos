@@ -1,4 +1,6 @@
-﻿using MisPrimerosPasos.Application.Interfaces;
+﻿using AutoMapper;
+using MisPrimerosPasos.Application.Dtos;
+using MisPrimerosPasos.Application.Interfaces;
 using MisPrimerosPasos.Entity;
 using MisPrimerosPasos.Repository.Interfaces;
 
@@ -7,21 +9,28 @@ namespace MisPrimerosPasos.Application.Implementaciones
     public class AlumnoApplication : IAlumnoApplication
     {
         private readonly IAlumnoRepository alumnoRepository;
+        private readonly IMapper mapper;
 
-        public AlumnoApplication(IAlumnoRepository alumnoRepository)
+        public AlumnoApplication(IAlumnoRepository alumnoRepository, IMapper mapper)
         {
             this.alumnoRepository = alumnoRepository;
+            this.mapper = mapper;
         }
-        public async Task<List<Alumno>> ListarAlumnos()
+        public async Task<List<AlumnoDto>> ListarAlumnos()
         {
             var alumnos = await this.alumnoRepository.ListarAlumnos();
-            return alumnos;
+            var alumnosDto = this.mapper.Map<List<AlumnoDto>>(alumnos);
+
+            return alumnosDto;
         }
 
-        public async Task<Alumno> ObtenerAlumno(int id)
+        public async Task<AlumnoDetalleDto> ObtenerAlumno(int id)
         {
             var alumno = await this.alumnoRepository.ObtenerAlumno(id);
-            return alumno;
+
+            var alumnoDetalleDto = this.mapper.Map<AlumnoDetalleDto>(alumno);
+
+            return alumnoDetalleDto;
         }
     }
 }
