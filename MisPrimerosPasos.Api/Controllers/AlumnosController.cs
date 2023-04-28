@@ -31,5 +31,12 @@ namespace MisPrimerosPasos.Api.Controllers
             }
             return alumno;
         }
+
+        [HttpPost]
+        public async Task<ActionResult> InsertarAlumno(AlumnoCreacionDto alumnoCreacion)
+        {
+            await this.alumnoApplication.InsertarAlumno(alumnoCreacion);
+            return Ok();
+        }
     }
 }

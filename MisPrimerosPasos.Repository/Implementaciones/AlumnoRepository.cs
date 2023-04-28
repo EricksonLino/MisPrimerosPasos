@@ -12,6 +12,7 @@ namespace MisPrimerosPasos.Repository.Implementaciones
         {
             this.context = context;
         }
+
         public async Task<List<Alumno>> ListarAlumnos()
         {
             var alumnos = await this.context.Alumnos.ToListAsync();
@@ -22,6 +23,13 @@ namespace MisPrimerosPasos.Repository.Implementaciones
         {
             var Alumno = await this.context.Alumnos.FirstOrDefaultAsync(al => al.Id == id);
             return Alumno;
+        }
+
+        public async Task InsertarAlumno(Alumno alumno)
+        {
+            this.context.Alumnos.Add(alumno);
+            await this.context.SaveChangesAsync();
+            
         }
     }
 }

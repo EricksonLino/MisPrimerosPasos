@@ -16,6 +16,7 @@ namespace MisPrimerosPasos.Application.Implementaciones
             this.alumnoRepository = alumnoRepository;
             this.mapper = mapper;
         }
+
         public async Task<List<AlumnoDto>> ListarAlumnos()
         {
             var alumnos = await this.alumnoRepository.ListarAlumnos();
@@ -31,6 +32,12 @@ namespace MisPrimerosPasos.Application.Implementaciones
             var alumnoDetalleDto = this.mapper.Map<AlumnoDetalleDto>(alumno);
 
             return alumnoDetalleDto;
+        }
+
+        public async Task InsertarAlumno(AlumnoCreacionDto alumnoCreacionDto)
+        {
+            var alumno = this.mapper.Map<Alumno>(alumnoCreacionDto);
+            await this.alumnoRepository.InsertarAlumno(alumno);
         }
     }
 }

@@ -6,5 +6,6 @@ namespace MisPrimerosPasos.Repository.Interfaces
     {
         Task<List<Alumno>> ListarAlumnos();
         Task<Alumno> ObtenerAlumno(int id);
+        Task InsertarAlumno(Alumno alumno);
     }
 }

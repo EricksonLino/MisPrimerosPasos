@@ -10,6 +10,7 @@ namespace MisPrimerosPasos.Application.Profiles
         {
             CreateMap<Alumno, AlumnoDetalleDto>();
             CreateMap<Alumno, AlumnoDto>();
+            CreateMap<AlumnoCreacionDto, Alumno>();
         }
     }
 }
