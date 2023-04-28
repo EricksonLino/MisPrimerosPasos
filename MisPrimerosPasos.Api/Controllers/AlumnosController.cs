@@ -15,7 +15,7 @@ namespace MisPrimerosPasos.Api.Controllers
             this.alumnoApplication = alumnoApplication;
         }
         [HttpGet]
-        public async Task<ActionResult<List<AlumnoDto>>> ListarAlumnos() 
+        public async Task<ActionResult<List<AlumnoDto>>> ListarAlumnos()
         {
             var alumnos = await this.alumnoApplication.ListarAlumnos();
             return alumnos;
@@ -25,7 +25,7 @@ namespace MisPrimerosPasos.Api.Controllers
         public async Task<ActionResult<AlumnoDetalleDto>> ObtenerAlumno(int id)
         {
             var alumno = await this.alumnoApplication.ObtenerAlumno(id);
-            if(alumno == null)
+            if (alumno == null)
             {
                 return NotFound($"Ups! no se encontro el alumno con ID {id}");
             }
@@ -36,6 +36,13 @@ namespace MisPrimerosPasos.Api.Controllers
         public async Task<ActionResult> InsertarAlumno(AlumnoCreacionDto alumnoCreacion)
         {
             await this.alumnoApplication.InsertarAlumno(alumnoCreacion);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> EliminarAlumno([FromRoute] int id)
+        {
+            await this.alumnoApplication.EliminarAlumno(id);
             return Ok();
         }
     }
