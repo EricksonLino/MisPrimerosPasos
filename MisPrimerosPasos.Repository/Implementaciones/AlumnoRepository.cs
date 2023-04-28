@@ -37,5 +37,11 @@ namespace MisPrimerosPasos.Repository.Implementaciones
             this.context.Alumnos.Remove(alumno);
             await this.context.SaveChangesAsync();
         }
+
+        public async Task ActualizarAlumno(Alumno alumno)
+        {
+            this.context.Alumnos.Update(alumno);
+            await this.context.SaveChangesAsync();
+        }
     }
 }

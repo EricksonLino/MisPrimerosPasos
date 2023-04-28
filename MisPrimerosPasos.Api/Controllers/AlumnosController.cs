@@ -45,5 +45,12 @@ namespace MisPrimerosPasos.Api.Controllers
             await this.alumnoApplication.EliminarAlumno(id);
             return Ok();
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> ActualizarAlumno([FromRoute] int id, [FromBody] AlumnoActualizarDto alumnoActualizar)
+        {
+            await this.alumnoApplication.ActualizarAlumno(id, alumnoActualizar);
+            return Ok();
+        }
     }
 }

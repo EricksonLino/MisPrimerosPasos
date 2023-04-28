@@ -45,5 +45,13 @@ namespace MisPrimerosPasos.Application.Implementaciones
             var alumno = await this.alumnoRepository.ObtenerAlumno(id);
             await this.alumnoRepository.EliminarAlumno(alumno);
         }
+
+        public async Task ActualizarAlumno(int id, AlumnoActualizarDto alumnoActualizar)
+        {
+            var alumno = await this.alumnoRepository.ObtenerAlumno(id);
+            this.mapper.Map(alumnoActualizar, alumno);
+
+            await this.alumnoRepository.ActualizarAlumno(alumno);            
+        }
     }
 }

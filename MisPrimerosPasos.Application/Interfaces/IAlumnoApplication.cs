@@ -9,5 +9,6 @@ namespace MisPrimerosPasos.Application.Interfaces
         Task<AlumnoDetalleDto> ObtenerAlumno(int id);
         Task InsertarAlumno (AlumnoCreacionDto alumnoCreacionDto);
         Task EliminarAlumno (int id);
+        Task ActualizarAlumno(int id, AlumnoActualizarDto alumnoActualizarDto);
     }
 }
